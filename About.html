@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVQLX's Links</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rasputin&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('image.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: 'Rasputin', sans-serif;
+            text-align: center;
+            color: neon;
+        }
+
+        h1 {
+            font-size: 3em;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .links {
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        a {
+            font-size: 1.5em;
+            text-decoration: none;
+            color: Ravenlack;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            animation: slideIn 1.5s ease-in-out;
+            transition: all 0.2s ease-in-out;
+        }
+
+        a:hover {
+            background-color: rgba(0, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+        <button class="fab" onclick="document.getElementById('note-text').focus()"></button>
+
+    <button class="dark-mode-btn" onclick="toggleDarkMode()"></button>
+    <a href="launcher.html">
+        <button style="position: absolute; top: 20px; left: 20px; padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px;">
+          Back to Main Screen
+        </button>
+
+    <div class="links">
+        <a href="https://youtube.com/@svqlx-admin?si=aSOBhUpcz_M01BRv" target="_blank">YouTube Channel</a>
+        <a href="info.svqlx@gmail.com" target="_blank">info.svqlx@gmail.com</a>
+        <a href="https://replit.com/@arnavagarwalrnc" target="_blank">Replit</a>
+        <a href="https://justarnavexe.wixsite.com/codenexus" target="_blank">Code-Nexus</a>
+    </div>
+</body>
+</html>

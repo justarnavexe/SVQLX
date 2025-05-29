@@ -1,0 +1,407 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>©SVQLX 2025</title>
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #00ff87 0%, #60efff 100%);
+            --secondary-gradient: linear-gradient(135deg, #0061ff 0%, #60efff 100%);
+            --accent-color: #00ff88;
+            --text-dark: #0a0a0a;
+            --text-light: #f8fafc;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --neon-shadow: 0 0 15px rgba(0, 255, 135, 0.5);
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(45deg, #08001f, #1c0522);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0,255,135,0.1) 0%, transparent 70%);
+            animation: float 20s infinite linear;
+            pointer-events: none;
+        }
+
+        header {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            color: var(--accent-color);
+            width: 100%;
+            max-width: 1200px;
+            padding: 1.5rem;
+            text-align: center;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            box-shadow: var(--neon-shadow);
+            border: 1px solid rgba(0, 255, 135, 0.2);
+            animation: slideDown 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: var(--primary-gradient);
+            opacity: 0.1;
+            transform: rotate(45deg);
+            pointer-events: none;
+            animation: shine 6s infinite;
+        }
+
+        .login-container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            padding: 2.5rem;
+            border-radius: 30px;
+            box-shadow: var(--neon-shadow);
+            margin-top: 2rem;
+            width: 90%;
+            max-width: 440px;
+            animation: float 6s ease-in-out infinite;
+            border: 1px solid rgba(0, 255, 135, 0.2);
+            position: relative;
+        }
+
+        .login-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 30px;
+            padding: 2px;
+            background: var(--primary-gradient);
+            -webkit-mask: 
+                linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+            mask: 
+                linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            animation: borderFlow 6s linear infinite;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        label {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.6);
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 1.2rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            color: var(--text-light);
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        input:focus ~ label,
+        input:valid ~ label {
+            top: -10px;
+            left: 0.8rem;
+            font-size: 0.8rem;
+            color: var(--accent-color);
+        }
+
+        button {
+            background: var(--primary-gradient);
+            color: var(--text-dark);
+            padding: 1.2rem 2rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.1rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 25px rgba(0, 255, 135, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.3), 
+                transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        .app-links {
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+        }
+
+        .app-links.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .app-card {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 255, 135, 0.2);
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+            background: rgba(0, 0, 0, 0.4);
+            box-shadow: var(--neon-shadow);
+        }
+
+        footer {
+            margin-top: auto;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            color: var(--accent-color);
+            width: 100%;
+            max-width: 1200px;
+            padding: 1.5rem;
+            text-align: center;
+            border-radius: 15px;
+            margin-top: 2rem;
+            border: 1px solid rgba(0, 255, 135, 0.2);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes shine {
+            0% { left: -50%; }
+            100% { left: 150%; }
+        }
+
+        @keyframes borderFlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--accent-color);
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .login-container {
+                padding: 1.5rem;
+                width: 95%;
+            }
+
+            .app-links {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Keep the same HTML structure as before -->
+    <header>
+        <h1>SVQLX 1.0</h1>
+        <nav>
+            <a href="index.html">Home</a> 
+            <a href="https://arnavagarwalrnc1.wixsite.com/mysite">About</a>
+        </nav>
+    </header>
+
+    <div class="login-container">
+        <form id="loginForm" onsubmit="return handleLogin(event)">
+            <div class="form-group">
+                <input type="text" id="username" required>
+                <label for="username">Username</label>
+            </div>
+
+            <div class="form-group">
+                <input type="password" id="password" required>
+                <label for="password">Password</label>
+            </div>
+
+            <button type="submit">Access System</button>
+            <div class="loading" id="loading">
+                <div class="loading-spinner"></div>
+            </div>
+        </form>
+
+        <div class="app-links" id="appLinks">
+            <div class="app-card">
+                <a href="https://justarnavexe.wixsite.com/codenexus" target="_blank">SVQLX 1.1 Alpha</a>
+            </div>
+            <div class="app-card">
+                <a href="https://drive.google.com/file/d/14ze4swlUShLINJMGQIDgfC6ijxeLP0bM/view?usp=drivesdk" target="_blank">Achivements©</a>
+            </div>
+            <div class="app-card">
+                <a href="launcher.html" target="_blank">Launch</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Quantum Interface. All rights reserved. SVQLX_Tech. </p>
+    </footer>
+
+    <script>
+        const validCredentials = [
+            { username: "Owner", password: "owner@Arnav@SVQLX" },
+            { username: "admin", password: "admin@19566" },
+            { username: "Operator", password: "Ops@@1SVQLX" },
+            { username: "user@1", password: "user12337" },
+            { username: "user@2", password: "ussr@20013" },
+            { username: "user@3", password: "ITprog@777" },
+            { username: "user@4", password: "58392" },
+{ username: "user@5", password: "72914" },
+{ username: "user@6", password: "36107" },
+{ username: "user@7", password: "10485" },
+{ username: "user@8", password: "59234" },
+{ username: "user@9", password: "87321" },
+{ username: "user@10", password: "34876" },
+{ username: "user@11", password: "91542" },
+{ username: "user@12", password: "68703" },
+{ username: "user@13", password: "40712" },
+{ username: "user@14", password: "52098" },
+{ username: "user@15", password: "30271" },
+{ username: "user@16", password: "68340" },
+{ username: "user@17", password: "96182" },
+{ username: "user@18", password: "24567" },
+{ username: "user@19", password: "78902" },
+{ username: "user@20", password: "43056" },
+{ username: "user@21", password: "53789" },
+{ username: "user@22", password: "27845" },
+{ username: "user@23", password: "64021" },
+{ username: "user@24", password: "91432" },
+{ username: "user@25", password: "35908" },
+{ username: "user@26", password: "72643" },
+{ username: "user@27", password: "80329" },
+{ username: "user@28", password: "14257" },
+{ username: "user@29", password: "65879" },
+{ username: "user@30", password: "91862" },
+{ username: "user@31", password: "70543" },
+{ username: "user@32", password: "32867" },
+{ username: "user@33", password: "47691" },
+{ username: "user@34", password: "53480" },
+{ username: "user@35", password: "28573" },
+{ username: "user@36", password: "69014" },
+{ username: "user@37", password: "84129" },
+{ username: "user@38", password: "42075" },
+{ username: "user@39", password: "37981" },
+{ username: "user@40", password: "95837" },
+{ username: "user@41", password: "61724" },
+{ username: "user@42", password: "30498" },
+{ username: "user@43", password: "87260" },
+{ username: "user@44", password: "46923" },
+{ username: "user@45", password: "74130" },
+{ username: "user@46", password: "52867" },
+{ username: "user@47", password: "19345" },
+{ username: "user@48", password: "65980" },
+{ username: "user@49", password: "82714" },
+{ username: "user@50", password: "37462" }
+        ];
+
+        function handleLogin(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            const loading = document.getElementById('loading');
+            loading.style.display = 'block';
+
+            setTimeout(() => {
+                const isValid = validCredentials.some(cred => cred.username === username && cred.password === password);
+                if (isValid) {
+                    document.getElementById('appLinks').classList.add('visible');
+                } else {
+                    alert('Access Denied: Invalid username or password.');
+                }
+                loading.style.display = 'none';
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
