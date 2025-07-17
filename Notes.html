@@ -4,23 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Note Keeper</title>
+    <link rel="stylesheet" href="theme.css">
     <style>
-        /* Basic reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Roboto', sans-serif;
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-            transition: background 0.5s ease;
+            padding: var(--space-lg);
+            transition: background var(--transition-slow);
         }
 
         .dark-mode body {
@@ -28,18 +19,16 @@
         }
 
         .app-container {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            background: var(--secondary-bg);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
             max-width: 600px;
             width: 100%;
             text-align: center;
-            transition: background-color 0.3s ease;
-        }
-
-        .dark-mode .app-container {
-            background-color: #444;
+            transition: background-color var(--transition-normal);
         }
 
         h1 {

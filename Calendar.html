@@ -4,27 +4,42 @@
     <title>Calendar - 2025</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+    <link rel="stylesheet" href="theme.css">
     <style>
         @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,600');
         
         body {
-            margin: 0;
-            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            background: var(--primary-bg);
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background: url(https://images.pexels.com/photos/1072179/pexels-photo-1072179.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260);
             background-size: cover;
-            font-family: "Poppins", sans-serif;
+            opacity: 0.3;
+            z-index: -1;
         }
 
         .calendar {
             width: 300px;
             height: auto;
-            background: #fff;
+            background: var(--secondary-bg);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
             box-sizing: border-box;
-            box-shadow: 0 5px 50px rgba(0,0,0,.5);
+            box-shadow: var(--shadow-xl);
+            overflow: hidden;
         }
 
         .calendar .image {
